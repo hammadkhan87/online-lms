@@ -1,0 +1,21 @@
+@import "../../../../Styles/app.scss";
+.explore_container_chapters {
+  display: flex;
+  margin: auto;
+  .explore_container_chapters_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 20px;
+    .explore_container_chapters_item_el {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+    .explore_container_chapters_item_title{
+        font-family: $family;
+        text-transform: uppercase;
+    }
+    
+  }
+}

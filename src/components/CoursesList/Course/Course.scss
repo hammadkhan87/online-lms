@@ -1,0 +1,67 @@
+@import "../../../Styles/app.scss";
+.course_container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 13px;
+  padding: 10px;
+  .courses_container_img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .course_container_skill {
+    background-color: $lightBlue;
+    color: $blue;
+    margin-bottom: 10px;
+    font-size: 11px;
+    padding: 7px;
+    border-radius: 5px;
+    font-weight: 700;
+    width: fit-content;
+    text-transform: uppercase;
+    font-family: $family;
+  }
+  .course_container_title {
+    color: $black;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: $family;
+  }
+  .course_container_footer {
+    display: flex;
+    margin: 20px 0px;
+    font-size: 14px;
+    justify-content: space-between;
+    font-family: $family;
+    div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: $family;
+
+        .course_container_footer_icon {
+            padding: 4px;
+      
+            border-radius: 50%;
+            background-color: $lightBlue;
+            font-family: $family;
+          }
+    }
+    
+  }
+}
+
+.course_container_footer_icon:nth-child(1) {
+  color: red;
+  font-size: 23px;
+}
+.course_container_footer_icon:nth-child(2) {
+  color: blue;
+  font-size: 23px;
+}

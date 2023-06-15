@@ -1,0 +1,82 @@
+@import "../../../Styles/app.scss";
+.heropage_container {
+  width: 100%;
+  display: flex;
+  @include xtablet {
+    flex-direction: column;
+  }
+
+  .heropage_content {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+    color: $black;
+    font-family: $family;
+    padding: 0px 50px;
+    @include xlaptop {
+      width: 50%;
+    }
+    @include laptop {
+      padding: 0px 40px;
+    }
+    @include xtablet {
+      width: 100%;
+      padding: 0px 0px;
+    }
+    .heropage_content_heading {
+      font-weight: 800;
+      font-size: 40px;
+      margin-bottom: 30px;
+      margin-top: 50px;
+      @include laptop {
+        font-size: 35px;
+      }
+      @include xtablet {
+        font-size: 30px;
+      }
+
+      .special_words {
+        color: $blue;
+      }
+    }
+    .heropage_content_des {
+      font-size: 16px;
+      color: lighten($black, $amount: 30);
+      margin-bottom: 30px;
+    }
+    .heropage_content_input {
+      
+      all: unset;
+      box-sizing: border-box;
+      background-color: $lightBlue;
+      width: 100%;
+      height: 50px;
+      padding: 0px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      margin-bottom: 100px;
+      
+      color: lighten($blue, $amount: 0);
+      ::placeholder {
+        font-weight: bold;
+        color: red;
+      }
+    }
+  }
+  .heropage_img {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+
+    @include xlaptop {
+      width: 50%;
+    }
+    @include xtablet {
+      width: 100%;
+    }
+  }
+}
+input::placeholder {
+  color: lighten($black, $amount: 50);
+}

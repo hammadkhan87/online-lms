@@ -1,0 +1,124 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-family: "inter";
+  // height: 90vh;
+  margin: 50px 0px;
+
+  .left-side {
+    flex: 1;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .image {
+      @media only screen and (max-width: "730px") {
+        display: none;
+      }
+    }
+  }
+
+  .right-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .inner-content {
+      margin-right: 30%;
+    }
+    .select {
+      width: 300px;
+      height: 35px;
+      border-radius: 7px;
+      border: 1px solid rgba(0, 0, 0, 0.29);
+    }
+    .already {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      p {
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.29);
+      }
+      button {
+        all: unset;
+        color: rgba(0, 0, 0, 0.29);
+        text-align: center;
+        margin-left: 5px;
+        font-weight: 500;
+        width: 60px;
+        height: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.29);
+        border-radius: 15px;
+      }
+    }
+    .inner-content-2 {
+      margin-top: 5%;
+      p {
+        margin-top: 10px;
+        color: rgba(0, 0, 0, 0.29);
+        font-weight: 500;
+      }
+    }
+    .form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      form {
+        display: flex;
+        flex-direction: column;
+        label {
+          font-size: 12px;
+          font-weight: 600;
+          margin-top: 10px;
+          margin-bottom: 2px;
+          color: rgba(0, 0, 0, 0.29);
+        }
+      }
+
+      input {
+        width: 300px;
+        height: 35px;
+        padding-left: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.29);
+        border-radius: 5px;
+      }
+      .btn {
+        all: unset;
+        margin-top: 20px;
+        height: 40px;
+        border-radius: 50px;
+        width: 130px;
+        background-color: #7c89f1;
+        font-size: 1rem;
+        font-weight: 600;
+        color: white;
+        text-align: center;
+      }
+    }
+  }
+  @media only screen and (max-width: "730px") {
+    flex-direction: column;
+    .left-side {
+      flex-direction: row;
+
+      align-items: center;
+    }
+    .right-side {
+      align-items: center;
+      justify-content: center;
+      .inner-content {
+        margin: 0;
+      }
+    }
+  }
+}
