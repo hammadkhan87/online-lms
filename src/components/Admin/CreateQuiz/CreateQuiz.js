@@ -41,9 +41,9 @@ const CreateQuiz = () => {
   const [open, setOpen] = useState(false);
   const [openDragdrop, setOpenDragdrop] = useState(false);
   const [openFill, setOpenFill] = useState(false);
-  const [mark, setMark] = useState("1");
+  const [mark, setMark] = useState("1.0");
   const [lessonimage, setLessonImage] = useState(null);
-  const [duration, setDuration] = useState("1");
+  const [duration, setDuration] = useState("1.0");
   const [lessonName, setLessonName] = useState("");
   const [AllQuestions, setAllQuestions] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
@@ -51,6 +51,10 @@ const CreateQuiz = () => {
   const [chapters, setChapters] = useState([]);
   const [filterArray, setFilterArray] = useState([]);
   const [showlessonimage, setShowlessonimage] = useState(null);
+  const localData = localStorage.getItem("userData")
+  const role = localData?JSON.parse(localData).role: null;
+  const ref_id = localData?JSON.parse(localData).userId: null;
+  console.log(role)
   let chapterName;
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -171,8 +175,7 @@ const CreateQuiz = () => {
     } else {
       console.log("No chapter found with the given title.");
     }
-    console.log(chapterRefId);
-    console.log(lessonimage);
+    
   }, [options]);
 
   const storeData = async (
@@ -290,6 +293,7 @@ const CreateQuiz = () => {
         selectedOptions.length === 0 ||
         selected_book === "" ||
         chapter === "" ||
+        selectedOptions === "" ||
         mark === ""
       ) {
         console.log("enter complete input");
@@ -312,6 +316,8 @@ const CreateQuiz = () => {
             subject: selected_book,
             questions: uploadedQuestions,
             playCounter: "",
+            role:role,
+            refId:ref_id, 
             createdAt: timestamp,
           };
 
@@ -332,7 +338,7 @@ const CreateQuiz = () => {
   };
 
   const totalmarks = selectedItems.length * mark;
-  const totaldutration = selectedItems.length * duration;
+  const totalduration = selectedItems.length * duration;
 
   const handleSubmit = (e, type) => {
     e.preventDefault();
@@ -341,14 +347,12 @@ const CreateQuiz = () => {
       lessonName,
       lessonimage,
       totalmarks,
-      totaldutration,
+      totalduration,
       type,
       selectedItems
     );
   };
-  console.log(selected_book);
-  console.log(chapter);
-  console.log(selectedItems);
+  
   return (
     <div className="quiz-main-div">
       <h2 className="A-h2">Create Quiz</h2>
@@ -697,7 +701,7 @@ const CreateQuiz = () => {
                 <div>
                   <label htmlFor="">Duration Per Question?</label>
                   <select
-                    defaultValue={"1"}
+                    defaultValue={"1.0"}
                     onChange={(e) => setDuration(e.target.value)}
                     className="select"
                     required

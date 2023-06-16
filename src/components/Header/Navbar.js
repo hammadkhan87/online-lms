@@ -58,6 +58,9 @@ const Navbar = ({ role, isLogin }) => {
   const handleonchange = (e) => {
     setSearch(e.target.value);
   };
+  const handleBlur = () => {
+    setSearch(''); // Reset the search state when the input loses focus
+  };
   const handleEnter = (e) => {
     e.preventDefault()
     navigate(`self-search-quiz?search=${search}`);
@@ -82,6 +85,7 @@ const Navbar = ({ role, isLogin }) => {
                 value={search}
                 onChange={(e) => handleonchange(e)}
                 placeholder="SearchQuiz..."
+                onBlur={handleBlur}
               />
               <FaSearch  style={{textAlign:"center", marginTop:"10px", marginRight:"5px"}} onClick={handleEnter} />
             </form>
@@ -104,7 +108,7 @@ const Navbar = ({ role, isLogin }) => {
               <p>Sign in</p>
             </Link>
           )}
-          {(role == "Teacher" || role == "admin") && (
+          {(role == "Teacher" || role == "Admin") && (
             <Link className="right-side_btn" to="create-quiz">
               <p>Creat Quiz</p>
             </Link>
