@@ -1,0 +1,91 @@
+@import "../../../../Styles/app.scss";
+
+.main-singleclass-container {
+  padding: 20px;
+  display: flex;
+  width: 100%;
+  background-color: #F0F3F3;
+
+
+.sider-bar-main {
+    background-color: white;
+    border-radius: 7px;
+  width: 20%;
+  padding: 10px;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  align-items: center;
+
+  .icon_text {
+    text-align: center;
+    display: flex;
+    .icon-a {
+      font-size: 50px;
+      color: $blue;
+    }
+    p {
+      margin-left: 10px;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+  .under-class-div {
+    margin-top: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+      border-radius: 7px;
+      width: 100%;
+      margin-top: 15px;
+      padding: 10px;
+      font-weight: bold;
+      color: $black;
+    }
+    p:hover {
+      cursor: pointer;
+      background-color: $blue-A;
+    }
+  }
+
+}
+.right-side-single-class {
+    background-color: white;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin-left: 10px;
+    width: 80%;
+    height: 85vh;
+    align-items: center;
+    .right-top-bar {
+      background-color: $lightGray;
+      width: 95%;
+      height: 18%;
+      margin: 10px;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+      .grade-text{
+        font-weight: bold;
+        color: $blue;
+        margin-left: 15px;
+      }
+      .teacher-text{
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        margin: 10px;
+        margin-right: 20px;
+      }
+    }
+  }
+}

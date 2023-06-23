@@ -8,6 +8,7 @@ const ClassRoom = () => {
   return (
     <div className="classroom_container">
       <Sidebar />
+      
       <Outlet />
     </div>
   );

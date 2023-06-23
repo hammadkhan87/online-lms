@@ -826,7 +826,7 @@ const CreateQuiz = () => {
           <button
             className="btnn"
             type="submit"
-            onClick={(e) => handleSubmit(e, "public")}
+            onClick={(e) => handleSubmit(e,"public")}
           >
             Submit publicly
           </button>

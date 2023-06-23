@@ -8,7 +8,7 @@ import "firebase/compat/storage";
 import { FiList } from "react-icons/fi";
 import { MdGrade } from "react-icons/md";
 import Preview from "./Preview/Preview";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import { query } from "firebase/firestore";
 import { duration } from "@mui/material";
 
@@ -17,38 +17,35 @@ firebase.initializeApp(firebaseConfig);
 const storage = firebase.storage();
 
 const SearchQuiz = () => {
-  const localData = localStorage.getItem("userData")
-  const role = localData?JSON.parse(localData).role: null;
-  const ref_id = localData?JSON.parse(localData).userId: null;
-    const location = useLocation();
+  const localData = localStorage.getItem("userData");
+  const role = localData ? JSON.parse(localData).role : null;
+  const ref_id = localData ? JSON.parse(localData).userId : null;
+  const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const searchQuery = searchParams.get('search');
-//   setSearchTerm(searchQuery)
-  
+  const searchQuery = searchParams.get("search");
+  //   setSearchTerm(searchQuery)
+
   const [searchTerm, setSearchTerm] = useState(searchQuery);
   const [lessons, setLessons] = useState([]);
   const [selectedGrades, setSelectedGrades] = useState([]);
   const [selectedSubjects, setSelectedSubjects] = useState([]);
-  const[lessonName,setLessonName]=useState("")
-  const[teacherName,setTeacherName]=useState("")
-  const[questions,setQuestions]=useState([])
-  const[lessonid,setLessonid] = useState("")
-  const[chapterid,setChapterid]= useState("")
-  const[totalmarks,setTotalMarks]=useState("")
-  const[totalDuration,setTotalDuration]=useState("")
-  const[lessonimage,setLessonImage] =useState("")
-  const[grade,setGrade] =useState("")
-  const[subject,setSubject] =useState("")
-
-
-  
+  const [lessonName, setLessonName] = useState("");
+  const [teacherName, setTeacherName] = useState("");
+  const [questions, setQuestions] = useState([]);
+  const [lessonid, setLessonid] = useState("");
+  const [chapterid, setChapterid] = useState("");
+  const [totalmarks, setTotalMarks] = useState("");
+  const [totalDuration, setTotalDuration] = useState("");
+  const [lessonimage, setLessonImage] = useState("");
+  const [grade, setGrade] = useState("");
+  const [subject, setSubject] = useState("");
 
   console.log(searchQuery);
   const fetchLessons = async () => {
     const lessonSnapshot = await firebase
       .firestore()
       .collection("lessonQuiz")
-      .where("quizType", "==", "self")
+      .where("quizType", "in", ["self", "public"])
       .get();
 
     const searchedLessons = lessonSnapshot.docs
@@ -100,21 +97,34 @@ const SearchQuiz = () => {
       fetchLessons();
     }
   }, [searchTerm, selectedGrades, selectedSubjects]);
-   const handlecardclick =(name,question,id,chapid,img,sub,grade,duration,mark)=>{
-    setLessonName(name)
-    setQuestions(question)
-    setLessonid(id)
-    setChapterid(chapid)
-    setLessonImage(img)
-    setSubject(sub)
-    setGrade(grade)
-    setTotalDuration(duration)
-    setTotalMarks(mark)
-
-   }
-   useEffect(()=>{
- 
-   },[lessonid,chapterid,lessonName,questions,handlecardclick])
+  const handlecardclick = (
+    name,
+    question,
+    id,
+    chapid,
+    img,
+    sub,
+    grade,
+    duration,
+    mark
+  ) => {
+    setLessonName(name);
+    setQuestions(question);
+    setLessonid(id);
+    setChapterid(chapid);
+    setLessonImage(img);
+    setSubject(sub);
+    setGrade(grade);
+    setTotalDuration(duration);
+    setTotalMarks(mark);
+  };
+  useEffect(() => {}, [
+    lessonid,
+    chapterid,
+    lessonName,
+    questions,
+    handlecardclick,
+  ]);
 
   return (
     <>
@@ -125,7 +135,6 @@ const SearchQuiz = () => {
             <div className="search-input-container">
               <input
                 value={searchTerm}
-
                 type="text"
                 className="search-input"
                 placeholder="Search Quiz..."
@@ -311,19 +320,25 @@ const SearchQuiz = () => {
 
             <div className="result-container">
               {lessons.map((lesson, index) => {
-                console.log(lesson,"Biglesson")
+                console.log(lesson, "Biglesson");
                 return (
-                  <div className="result-card-main" key={index} 
-                  onClick={()=>handlecardclick(lesson.lessonName,
-                  lesson.questions,
-                  lesson.id,
-                  lesson.chapterId,
-                  lesson.lessonImage,
-                  lesson.subject,
-                  lesson.grade,
-                  lesson.totalDuration,
-                  lesson.totalMarks
-                  )}>
+                  <div
+                    className="result-card-main"
+                    key={index}
+                    onClick={() =>
+                      handlecardclick(
+                        lesson.lessonName,
+                        lesson.questions,
+                        lesson.id,
+                        lesson.chapterId,
+                        lesson.lessonImage,
+                        lesson.subject,
+                        lesson.grade,
+                        lesson.totalDuration,
+                        lesson.totalMarks
+                      )
+                    }
+                  >
                     <div className="div-img">
                       <img
                         src={lesson.lessonImage}
@@ -356,16 +371,17 @@ const SearchQuiz = () => {
             <div className="text-Preview">
               <p>Preview</p>
             </div>
-            <Preview lessonName={lessonName}
-             questions={questions} 
-             lessonid={lessonid}
-            chapterid={chapterid}
-            lessonimage={lessonimage}
-            subject={subject}
-            grade={grade}
-            totalDuration={totalDuration}
-            totalMarks={totalmarks}
-               />
+            <Preview
+              lessonName={lessonName}
+              questions={questions}
+              lessonid={lessonid}
+              chapterid={chapterid}
+              lessonimage={lessonimage}
+              subject={subject}
+              grade={grade}
+              totalDuration={totalDuration}
+              totalMarks={totalmarks}
+            />
           </div>
         </div>
       </div>

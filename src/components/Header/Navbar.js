@@ -78,6 +78,12 @@ const Navbar = ({ role, isLogin }) => {
             {" "}
             <p>Self Study</p>
           </Link>
+          {(role == "Admin")&&(
+            <Link className="" to="/admin-dashboard">
+              <p>Admin Pannel</p>
+            </Link>
+          )}
+         
           <div className="search-bar">
             <form onSubmit={handleEnter} style={{display:"flex"}}>
               <input
@@ -92,7 +98,8 @@ const Navbar = ({ role, isLogin }) => {
           </div>
         </div>
         <div className="right-side">
-          {isLogin && (
+          { role == "Teacher" && (
+          
             <Link className="right-side_btn" to="classroom">
               <p>Class room</p>
             </Link>
@@ -108,8 +115,8 @@ const Navbar = ({ role, isLogin }) => {
               <p>Sign in</p>
             </Link>
           )}
-          {(role == "Teacher" || role == "Admin") && (
-            <Link className="right-side_btn" to="create-quiz">
+          {(role == "Admin")&&(
+            <Link className="right-side_btn" to="/admin-create-quiz">
               <p>Creat Quiz</p>
             </Link>
           )}
