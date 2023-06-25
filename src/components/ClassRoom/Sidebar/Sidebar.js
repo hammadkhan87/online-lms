@@ -76,6 +76,8 @@ const Sidebar = () => {
           <span className="classroom_sidebar_main_title">Settings</span>
         </NavLink>
       </div>
+     
+      
     </div>
   );
 };

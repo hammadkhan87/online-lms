@@ -1,0 +1,60 @@
+@import "../../../Styles/app.scss";
+
+.settings_container {
+  background-color: $lightBlue;
+  width: 100%;
+  padding: 40px;
+  .settings_form {
+    width: 600px;
+    background-color: $lightGray;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    border-radius: 6px;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
+    @include xtablet{
+        width: 100%;
+    }
+    .settings_title {
+      font-size: 22px;
+      font-weight: 700;
+      font-family: $family;
+      color: $black;
+    }
+    .settings_title_sec {
+      font-weight: 500;
+      font-size: 20px;
+      color: $black;
+    }
+    .settings_input_container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      .settings_input_item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        .settings_input_label {
+          font-size: 12px;
+          margin-bottom: 5px;
+          color: $black;
+        }
+        .settings_input_elem {
+          border: 1px solid lighten($color: $black, $amount: 20);
+          padding: 10px 10px;
+          border-radius: 6px;
+        }
+        .settings_input_item_btn {
+          background-color: $blue;
+          color: $lightBlue;
+          text-align: center;
+          padding: 10px;
+          border: 10px;
+          border-radius: 6px;
+        }
+      }
+    }
+  }
+}

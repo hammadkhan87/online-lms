@@ -1,0 +1,48 @@
+@import "../../../Styles/app.scss";
+.selfstudy_container_classroom {
+  width: 100%;
+  background-color: $lightBlue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .selfstudy_container_classroom_main {
+    width: 80%;
+    margin: auto;
+    box-shadow: 0px 0px 10px rgba(82, 79, 79, 0.479);
+    border-radius: 6px;
+
+    background-color: $lightGray;
+    .selfstudy_container_classroom_main_header {
+      width: 100%;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid rgba(97, 95, 95, 0.363);
+      .selfstudy_container_classroom_main_header_id {
+        width: 200px;
+      }
+      .selfstudy_container_classroom_main_header_name {
+        width: 200px;
+      }
+    }
+    .selfstudy_container_classroom_main_body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      .selfstudy_container_classroom_main_item {
+        display: flex;
+        padding: 10px 0px;
+        .selfstudy_container_classroom_main_item_id {
+          width: 200px;
+          color: $black;
+        }
+        .selfstudy_container_classroom_main_item_name {
+          width: 200px;
+          color: $black;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

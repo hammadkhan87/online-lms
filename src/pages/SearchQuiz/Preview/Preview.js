@@ -30,7 +30,7 @@ const Preview = ({ lessonName, questions ,lessonid,chapterid,lessonimage,
   console.log(chapterid)
   const localData = localStorage.getItem("userData");
   const role = localData ? JSON.parse(localData).role : null;
-  const ref_id = localData ? JSON.parse(localData).userId : null;
+  const ref_id = localData ? JSON.parse(localData).id: null;
   const [showAnswers, setShowAnswers] = useState(false);
   const [totalduration, setDuration] = useState("1.0");
   const [totalmark, setMark] = useState("1.0");
@@ -78,7 +78,7 @@ const Preview = ({ lessonName, questions ,lessonid,chapterid,lessonimage,
       } else {
         const timestamp = serverTimestamp();
 
-        const docRef = collection(db, "DynamicQuiz");
+        const docRef = collection(db, "lessonQuiz");
         const querySnapshot = await getDocs(query(docRef));
 
         if (querySnapshot) {
@@ -92,6 +92,7 @@ const Preview = ({ lessonName, questions ,lessonid,chapterid,lessonimage,
             subject,
             questions: selectedItems,
             playCounter: "",
+            Folder:"Dynamic",
             role:role,
             refId:ref_id, 
             createdAt: timestamp,

@@ -1,0 +1,15 @@
+@import "../../../Styles/app.scss";
+.classroom_mylibrary {
+  width: 100%;
+  background-color: $lightBlue;
+  padding: 40px;
+  .classroom_mylibrary_header {
+    color: $black;
+    font-size: 30px;
+    font-weight: 700;
+  }
+  .classroom_mylibrary_body{
+    display: flex;
+    gap: 20px;
+  }
+}

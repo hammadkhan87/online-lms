@@ -1,0 +1,203 @@
+@import "../../../Styles/app.scss";
+
+.coderoom_created {
+  width: 80%;
+  margin: auto;
+  .search-bar-main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 40px 0px;
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background-color: #f2f2f2;
+      padding: 5px;
+      width: 100%;
+      margin-top: 10px;
+      @include mobile {
+        width: 100%;
+      }
+    }
+
+    .search-input-container {
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 5px;
+      width: 93%;
+      @include mobile {
+        width: 70%;
+      }
+    }
+
+    .search-input {
+      flex: 1;
+      height: 30px;
+      border: none;
+      padding-left: 5px;
+      font-size: 16px;
+      @include mobile {
+        width: 60%;
+      }
+    }
+
+    .search-icon {
+      margin-right: 5px;
+    }
+    .btn-icon {
+      margin-right: 5px;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .search-button {
+      margin-left: 10px;
+      background-color: $blue;
+      border: none;
+      color: white;
+      width: 100px;
+      height: 40px;
+      font-size: 1rem;
+      margin-left: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .search-button:hover {
+      background-color: darken($color: $blue, $amount: 10);
+    }
+  }
+  .left-side-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @include tablet {
+      width: 100%;
+    }
+    @include mobile {
+      width: 100%;
+    }
+    .total-results {
+      width: 100%;
+      height: 10px;
+      align-items: center;
+      display: flex;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .result-container {
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px;
+
+      border-radius: 3px;
+      display: flex;
+      flex-direction: column;
+      height: 80vh;
+      overflow-y: auto;
+      .result-card-main {
+        margin: 5px;
+        border-radius: 10px;
+        padding: 15px;
+        width: 97%;
+        background-color: lighten($color: $lightBlue, $amount: 30);
+        border: 3px solid $blue;
+        display: flex;
+        box-shadow: 0px 0px 8px rgba(177, 174, 174, 0.8);
+        position: relative;
+        @include tablet {
+          flex-direction: column;
+          flex-wrap: wrap;
+          height: auto;
+        }
+
+        .div-img {
+          height: 100%;
+          width: 100px;
+
+          background-color: $lightBlue;
+
+          @include tablet {
+          }
+          .lesson-img {
+            width: 100%;
+            object-fit: cover;
+            height: 100px;
+            margin: 5px;
+            border-radius: 7px;
+          }
+        }
+        .coderoom_created_item_det_dots {
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          .coderoom_gen {
+            font-size: 30px;
+            .coderoom_gen_icon{
+              font-size: 30px;
+            }
+          }
+        }
+        .card-content {
+          display: flex;
+          flex-direction: column;
+          padding: 10px;
+          margin-left: 10px;
+          @include laptop {
+            flex-wrap: wrap;
+          }
+          @include tablet {
+            flex-wrap: wrap;
+          }
+          @include mobile {
+            padding: 3px;
+            margin-left: 5px;
+          }
+          .lesson-name-text {
+            font-size: 16px;
+            font-weight: 700;
+            color: $blue;
+          }
+          .inner-card-content {
+            display: flex;
+            margin: 10px;
+            @include tablet {
+              flex-wrap: wrap;
+            }
+            @include mobile {
+              margin: 2px;
+            }
+
+            .text-a {
+              height: 30px;
+              align-items: center;
+              align-items: center;
+              margin-left: 10px;
+              font-size: 14px;
+              display: flex;
+              justify-content: center;
+
+              font-weight: 500;
+              p {
+                margin-left: 5px;
+                color: gray;
+              }
+              .icon {
+                margin-top: 2px;
+                align-items: center;
+                justify-content: center;
+                color: $blue;
+              }
+            }
+          }
+        }
+      }
+      .result-card-main:hover {
+        border: 1px solid $blue;
+        cursor: pointer;
+      }
+    }
+  }
+}
