@@ -270,31 +270,39 @@ const Class = () => {
       toast.error("An error occurred while fetching classes");
     }
   };
-  const AddStudenthandler = (e) => {
+  const AddStudenthandler = async (e) => {
     if (!name || !email || !password) {
       toast.error("Please enter all values");
       return;
     }
 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(async (result) => {
-        const user = result.user;
+    
         try {
+          const result = await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+          const user = result.user;
           // Add the student to the "users" collection
-          const userDocRef = await addDoc(collection(db, "users"), {
+          const userDocRef = await setDoc(doc(db, "users", user.uid,
+          ), {
             name,
             email,
             role: role,
             loginCount: 1,
-            userId: result.user.uid,
+            id:user.uid,
+            userId: user.uid,
             createdAt: serverTimestamp(),
           });
 
           if (role === "Student") {
             // Add the student to the "students" collection
-            const studentDocRef = await addDoc(collection(db, "student"), {
+            const studentDocRef = await setDoc(doc(db, "student",result.user.uid), {
               name,
               email,
+              id:user.uid,
+              userId:user.uid,
               classrooms: [
                 {
                   classid: selectedClass.id,
@@ -313,7 +321,7 @@ const Class = () => {
             // Update the document with the new value for the students field
             await updateDoc(classRef, {
               students: firebase.firestore.FieldValue.arrayUnion(
-                studentDocRef.id
+                user.uid
               ), // Add the new student ID to the students array of the selected class
             });
 
@@ -345,15 +353,9 @@ const Class = () => {
         } catch (e) {
           console.log("Error in adding document", e);
           toast.error("An error occurred while adding the student");
+          setModalOpen(false);
+
         }
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
-        toast.error("An error occurred while creating the user");
-        setModalOpen(false);
-      });
   };
 
   useEffect(() => {

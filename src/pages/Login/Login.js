@@ -148,7 +148,7 @@ const Login = () => {
 
     } catch (error) {
       console.log('Error joining the class:', error);
-      toast.error('Failed to join the class');
+      // toast.error('Failed to join the class');
       navigate(`/`);
     }
   };

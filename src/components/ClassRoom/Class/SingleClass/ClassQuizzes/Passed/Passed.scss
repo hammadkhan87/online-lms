@@ -1,4 +1,8 @@
 @import "../../../../../../Styles/app.scss";
+.div-of-div-b{
+    overflow-y: auto;
+    overflow:scroll;
+    overflow-x:hidden;
 
 .main-div-quizes-p{
     display: flex;
@@ -6,7 +10,7 @@
     justify-content: center;
     flex-wrap: wrap;
     overflow-y: auto;
-
+    align-items: center;
     .inner-class-div-a-p{
         flex-wrap: wrap;
         display: flex;
@@ -53,6 +57,7 @@
         font-size: 12px;
       }
 }
-.main-div-quizes-p::-webkit-scrollbar{
+}
+.div-of-div-b::-webkit-scrollbar{
     display: none;
 }

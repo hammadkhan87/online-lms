@@ -55,20 +55,22 @@ const Passed = () => {
   }, []);
 
   return (
+    <div className='div-of-div-b'>
     <div className="main-div-quizes-p">
       {passedobjects.map((classItem, index) => (
         <div key={index} className="inner-class-div-a-p">
           <div className="inner-class-bar-a-p">
             <p className="single-class-name-a-p">{classItem.lessonName}</p>
             <p className="show-student-text-a-p">
-              Started : {classItem.start.replace("T", " ")}
+              Started :  {new Date(classItem.start).toLocaleDateString()} {new Date(classItem.start).toLocaleTimeString()}
             </p>
             <p className="show-student-text-b-p">
-              End at : {classItem.end.replace("T", " ")}
+              End at :  {new Date(classItem.end).toLocaleDateString()} {new Date(classItem.end).toLocaleTimeString()}
             </p>
           </div>
         </div>
       ))}
+    </div>
     </div>
   )
 }

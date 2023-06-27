@@ -120,6 +120,11 @@ const Navbar = ({ role, isLogin }) => {
               <p>Creat Quiz</p>
             </Link>
           )}
+          {(role == "Student")&&(
+            <Link className="right-side_btn" to="/student-classes">
+              <p>Classes</p>
+            </Link>
+          )}
 
           {isLogin && (
             <div onClick={HandleLogout} className="right-side_btn">

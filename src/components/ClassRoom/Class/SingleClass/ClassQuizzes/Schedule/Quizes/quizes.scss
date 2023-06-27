@@ -8,6 +8,8 @@
         justify-content: center;
         flex-wrap: wrap;
         overflow-y: auto;
+        overflow:scroll;
+        overflow-x:hidden;
 
         .inner-class-div-a{
             flex-wrap: wrap;
@@ -18,7 +20,7 @@
             height: 60px;
             // border: 1px solid $blue;
             border-radius: 5px;
-            background-color: white;
+            background-color: rgb(208, 225, 248);
             box-shadow: rgba(0, 0, 0, 0.10) 0px 3px 8px;
 
             .inner-class-bar-a{

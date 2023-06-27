@@ -27,6 +27,7 @@ import SelfGround from "./pages/SelfGround/SelfGround";
 import SelfPlay from "./pages/SelfPlay/SelfPlay";
 import { Toaster } from "react-hot-toast";
 import StudentPortal from "./pages/Studentportal/StudentPortal";
+import StudentPortalB from "./components/StudentPortal/StudentPortal"
 import SingleClass from "./components/ClassRoom/Class/SingleClass/SingleClass";
 import CreatedByMe from "./components/ClassRoom/MyLibrary/CreatedByMe/CreatedByMe";
 import Saved from "./components/ClassRoom/MyLibrary/Saved/Saved";
@@ -34,6 +35,7 @@ import Important from "./components/ClassRoom/MyLibrary/Important/Important"
 import Liked from "./components/ClassRoom/MyLibrary/Liked/Liked"
 import All from "./components/ClassRoom/MyLibrary/All/All"
 import Folder from "./components/ClassRoom/MyLibrary/Folder/Folder"
+import StudentClass from "./components/StudentPortal/StudentClass/StudentClass";
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const CoursesList = lazy(() => import("./pages/CoursesList/CoursesList"));
 const ClassRoom = lazy(() => import("./pages/ClassRoom/ClassRoom"));
@@ -89,10 +91,10 @@ function App() {
                 <Route path="settings" element={<Settings />} />
               </Route>
             ) : null}
-
+            <Route path="student-classes/student-class" element={<StudentClass/>}/>
             <Route path="/admin-dashboard" element={<Dashboard />} />
             <Route path="/self-search-quiz" element={<SearchQuizb />} />
-            
+            <Route path="/student-classes" element={<StudentPortalB/>}/>
             <Route path="/admin-create-quiz" exact element={<CreateQuiz />} />
             <Route path="/student-portal" exact element={<StudentPortal />} />
             <Route path="classroom/search/:quiz" element={<SearchQuiz />} />

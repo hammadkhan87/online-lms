@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+
 
 import "./Schedule.scss";
 import { Button, Modal, Select } from "antd";
@@ -60,8 +59,15 @@ const Schedule = ({ classroom }) => {
   const [finalselectedid, setFinalselectedid] = useState("");
   const [finalselectedlessonname, setFinalselectedname] = useState("");
   const [sheduledquizes, setsheduledquizes] = useState([]);
+  const date = new Date(); // Replace this with your actual date value
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
 
-  const classid = classroom.id;
+  const formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+
   console.log(startDateTime);
 
   useEffect(() => {
@@ -75,11 +81,16 @@ const Schedule = ({ classroom }) => {
   }, []);
 
   const handleStartDateTimeChange = (event) => {
-    setStartDateTime(event.target.value);
+    const newtime = new Date(event.target.value);
+    const utcDateTime = newtime.toISOString();
+
+    setStartDateTime(utcDateTime);
   };
 
-  const handleEndDateTimeChange = (date) => {
-    setEndDateTime(date.target.value);
+  const handleEndDateTimeChange = (event) => {
+    const newtime = new Date(event.target.value);
+    const utcDateTime = newtime.toISOString();
+    setEndDateTime(utcDateTime);
   };
 
   const fetchImportantDocs = async () => {
@@ -309,6 +320,7 @@ const Schedule = ({ classroom }) => {
       toast.error("Pls Enter all the data");
     } else {
       try {
+
         const classDocRef = doc(db, "classes", classroom.id);
         await updateDoc(classDocRef, {
           quizes: firebase.firestore.FieldValue.arrayUnion({
@@ -316,11 +328,13 @@ const Schedule = ({ classroom }) => {
             lessonName: finalselectedlessonname,
             start: startDateTime,
             end: endDateTime,
+            
           }),
         });
         toast.success("Quiz added");
-      } catch (err) {
+      } catch (error) {
         toast.error("Quiz not added");
+        console.log(error);
       }
     }
   };
